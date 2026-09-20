@@ -22,9 +22,8 @@
 function getStringLength(value) {
   if (value === null || value === undefined) {
     return 0;
-  } else {
-    return value.length;
   }
+  return value.length;
 }
 
 /**
@@ -44,9 +43,8 @@ function getStringLength(value) {
 function isString(value) {
   if (typeof value === 'string' || value instanceof String) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 /**
@@ -161,9 +159,8 @@ function removeFirstOccurrences(str, value) {
   const index = str.indexOf(value);
   if (index === -1) {
     return str;
-  } else {
-    return str.slice(0, index) + str.slice(index + value.length);
   }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 
 /**
@@ -182,9 +179,8 @@ function removeLastOccurrences(str, value) {
   const index = str.lastIndexOf(value);
   if (index === -1) {
     return str;
-  } else {
-    return str.slice(0, index) + str.slice(index + value.length);
   }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 
 /**
@@ -209,14 +205,11 @@ function sumOfCodes(str) {
   let currentIndex = 0;
 
   while (currentIndex < str.length) {
+    const characterCode = str.charCodeAt(currentIndex);
 
-    let currentCharacter = str[currentIndex];
+    totalSum += characterCode;
 
-    let characterCode = str.charCodeAt(currentIndex);
-
-    totalSum = totalSum + characterCode;
-
-    currentIndex = currentIndex + 1;
+    currentIndex += 1;
   }
 
   return totalSum;
@@ -335,9 +328,9 @@ function countVowels(str) {
   const vowels = 'aeiouyAEIOUY';
   let count = 0;
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (vowels.includes(str[i])) {
-      count++;
+      count += 1;
     }
   }
 
@@ -358,7 +351,6 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-
   const cleanStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
   const reversedString = cleanStr.split('').reverse().join('');
@@ -382,7 +374,7 @@ function findLongestWord(sentence) {
   const words = sentence.split(' ');
   let longestWord = '';
 
-  for (let i = 0; i < words.length; i++) {
+  for (let i = 0; i < words.length; i += 1) {
     if (words[i].length > longestWord.length) {
       longestWord = words[i];
     }
@@ -402,12 +394,10 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-
   const words = str.split(' ');
   const result = [];
 
-  for (let i = 0; i < words.length; i++) {
-
+  for (let i = 0; i < words.length; i += 1) {
     const reversedWord = words[i].split('').reverse().join('');
 
     result.push(reversedWord);
@@ -430,7 +420,7 @@ function reverseWords(str) {
 function invertCase(str) {
   let result = '';
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
 
     if (char === char.toUpperCase()) {
@@ -471,10 +461,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value
-    .replace('Hello, ', '')
-    .replace('!', '')
-    .trim();
+  return value.replace('Hello, ', '').replace('!', '').trim();
 }
 
 /**
@@ -530,20 +517,15 @@ function extractEmails(str) {
 function encodeToRot13(str) {
   let result = '';
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
     const code = str.charCodeAt(i);
 
     if (code >= 65 && code <= 90) {
-
       result += String.fromCharCode(((code - 65 + 13) % 26) + 65);
-    }
-
-    else if (code >= 97 && code <= 122) {
+    } else if (code >= 97 && code <= 122) {
       result += String.fromCharCode(((code - 97 + 13) % 26) + 97);
-    }
-
-    else {
+    } else {
       result += char;
     }
   }
@@ -577,10 +559,58 @@ function encodeToRot13(str) {
  */
 function getCardId(value) {
   const deck = [
-    'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-    'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-    'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-    'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
   ];
 
   return deck.indexOf(value);
